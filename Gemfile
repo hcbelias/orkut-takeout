@@ -45,3 +45,5 @@ gem 'json_builder'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
+gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw)
