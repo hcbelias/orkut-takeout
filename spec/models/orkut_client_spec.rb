@@ -18,9 +18,10 @@ describe OrkutClient do
             password: "081289"
           )
         ).and_return(sign_in_response)
-    
+
     #exercise
     orkut_client.sign_in("pedrohrs08@gmail.com","081289")
+    #verify
     expect(Authorizable).to be_signed_in
   end
 
@@ -37,8 +38,7 @@ describe OrkutClient do
 
 
   it "should not perform login with invalid credentials" do
-    #exercise
-    #verify
+    #exercise and verify
     expect { client.sign_in("invalid@invalid.com","invalid") }.to raise_error(Exception)
   end
 

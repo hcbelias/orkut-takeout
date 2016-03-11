@@ -19,17 +19,23 @@ describe CSVExporter do
   }
 
   it "should return a header on the first line of the file" do
+    #exercice
     csv_return   = exporter.export_friends
+    #verify
     expect(csv_return).to start_with "my_name,my_email,friend_name,friend_email\n"
   end
 
   context "content" do
     it "should include a line containing my email and my name" do
+      #exercice
       csv_return = exporter.export_friends(friends_hash, current_user_hash)
+      #verify
       expect(csv_return).to include "henriqueelias,hcbe2004@gmail.com"
     end
     it "should include my friends email and password" do
+      #exercice
       csv_return = exporter.export_friends(friends_hash, current_user_hash)
+      #verify
       expect(csv_return).to include "QA Couse User 1,qacourseuser1@avenuecode.com"
     end
   end

@@ -36,18 +36,22 @@ describe FirstSocialMediaController do
   }
 
   it "should throw an error if login parameters are not passed" do
+    #exercice and verify
     expect{ get :export }.to raise_error(/User missing/)
   end
 
   it "should export my data to csv format when I enter my credentials" do
+    #setup
     allow(RestClient).to receive(:post).and_return(stubbed_sign_in_response)
 
     allow(RestClient::Request).to receive(:execute).with(hash_including(url:/friendships\/me/)).and_return(friends_stubbed_response)
 
     allow(RestClient::Request).to receive(:execute).with(hash_including(url:/users\/me/)).and_return(user_stubbed_response)
 
+    #exercice
     get :export, user: "my_user@me", password: "my_password"
 
+    #verify
     expect(response.body).to start_with "my_name,my_email,friend_name,friend_email\n"
   end
 end
