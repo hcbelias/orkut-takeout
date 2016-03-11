@@ -36,6 +36,24 @@ describe XMLExporter do
    JSON.parse("[#{friends_string}]")
  }
 
+ let(:party_beginner_friends){
+  friends_array = []
+
+  3.times do
+       friends_array << %Q({
+                         "_id": "56ab7fc22e481306042c151d",
+                          "user": {
+                           "_id": "56ab7ee72e481306042c1518",
+                           "name": "QA Couse User 1",
+                           "email": "qacourseuser1@avenuecode.com"
+                          }
+                        })
+  end
+  friends_string = friends_array.join(",")
+
+  JSON.parse("[#{friends_string}]")
+}
+
   context "should export my friends in XML format" do
     it "should say my social type is SOCIABLE" do
       #exercice
@@ -53,7 +71,7 @@ describe XMLExporter do
      end
      it "should say my social type is BEGINNER" do
        #exercice
-       xml_return = exporter.export_friends([],current_user_hash)
+       xml_return = exporter.export_friends(party_beginner_friends,current_user_hash)
        xml_return = Hash.from_xml(xml_return)
        #verify
        expect(xml_return["user"]["socialType"]).to eq("BEGINNER")
