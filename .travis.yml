@@ -5,4 +5,4 @@ rvm:
 script:
  - export COVERALLS_SERVICE_NAME=travis-ci
  - export COVERALLS_REPO_TOKEN=j3hYGXHJkIWFUY0uINvmvjON709v9750g
- - bundle exec rspec spec
+ - bundle exec rake spec
