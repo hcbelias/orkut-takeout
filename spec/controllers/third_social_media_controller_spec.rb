@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe SecondSocialMediaController do
+describe ThirdSocialMediaController do
   let(:current_user_json) {
     %Q({
       "_id":"56df404693a9a845256d305b",
@@ -40,7 +40,7 @@ describe SecondSocialMediaController do
     expect{ get :export }.to raise_error(/User missing/)
   end
 
-  it "should export my data to XML format when I enter my credentials" do
+  it "should export my data to JSON format when I enter my credentials" do
     #setup
     allow(RestClient).to receive(:post).and_return(stubbed_sign_in_response)
 
@@ -51,13 +51,13 @@ describe SecondSocialMediaController do
     #exercise
     get :export, user: "my_user@me", password: "my_password"
 
-    data_return = Hash.from_xml(response.body)
+    data_return = JSON.parse(response.body) # Parsing response
+
     #verify
     expect(data_return["user"]).to_not be_nil
     expect(data_return["user"]["name"]).to eq "henriqueelias" # Checking current user info
     expect(data_return["user"]["email"]).to eq "hcbe2004@gmail.com" # Checking current user info
-    expect(data_return["user"]["friends"]).to_not be_nil # Checking frined's current user
-    expect(data_return["user"]["friends"]["friend"]).to_not be_nil# Checking frined's current user
-    expect(data_return["user"]["friends"]["friend"].length).to eq 5# Checking frined's current user
+    expect(data_return["friends"]).to_not be_nil # Checking frined's current user
+    expect(data_return["friends"].length).to eq data_return["count"]# Checking frined's current user
   end
 end

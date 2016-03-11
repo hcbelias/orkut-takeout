@@ -36,7 +36,7 @@ describe FirstSocialMediaController do
   }
 
   it "should throw an error if login parameters are not passed" do
-    #exercice and verify
+    #exercise and verify
     expect{ get :export }.to raise_error(/User missing/)
   end
 
@@ -48,7 +48,7 @@ describe FirstSocialMediaController do
 
     allow(RestClient::Request).to receive(:execute).with(hash_including(url:/users\/me/)).and_return(user_stubbed_response)
 
-    #exercice
+    #exercise
     get :export, user: "my_user@me", password: "my_password"
 
     #verify

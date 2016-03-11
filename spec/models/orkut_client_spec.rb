@@ -57,7 +57,7 @@ describe OrkutClient do
   it "should not get the friends info with invalid credentials" do
     #setup
     Authorizable.clear_token
-    #exercice and verify
+    #exercise and verify
     expect { orkut_client.get_my_friends }.to raise_error(Exception)
   end
 
@@ -73,7 +73,7 @@ describe OrkutClient do
         ).and_return(sign_in_response)
     orkut_client.sign_in("pedrohrs08@gmail.com","081289")
     allow(RestClient::Request).to receive(:execute).with(hash_including(url:/friendships\/me/)).and_return(friends_stubbed_response)
-    #exercice
+    #exercise
     friend_list = orkut_client.get_my_friends
     #verify
     expect(friend_list.length).to eq 3

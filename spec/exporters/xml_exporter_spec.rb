@@ -56,21 +56,21 @@ describe XMLExporter do
 
   context "should export my friends in XML format" do
     it "should say my social type is SOCIABLE" do
-      #exercice
+      #exercise
       xml_return = exporter.export_friends(friends_hash, current_user_hash)
       xml_return = Hash.from_xml(xml_return)
       #verify
       expect(xml_return["user"]["socialType"]).to eq("FRIENDLY")
     end
     it "should say my social type is PARTY ANIMAL" do
-      #exercice
+      #exercise
       xml_return = exporter.export_friends(party_animal_friends,current_user_hash)
       xml_return = Hash.from_xml(xml_return)
       #verify
       expect(xml_return["user"]["socialType"]).to eq("PARTY ANIMAL")
      end
      it "should say my social type is BEGINNER" do
-       #exercice
+       #exercise
        xml_return = exporter.export_friends(party_beginner_friends,current_user_hash)
        xml_return = Hash.from_xml(xml_return)
        #verify

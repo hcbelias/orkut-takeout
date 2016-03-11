@@ -7,14 +7,14 @@ describe Authorizable do
   it "should store the authentication token while prepended by baerer" do
     #setup
     expected_token = "this is my token"
-    #exercice
+    #exercise
     Authorizable.set_token my_token
     #verify
     expect(Authorizable.get_token).to eq "bearer " + expected_token
   end
 
   it "should sign in when I have a token stored" do
-    #exercice
+    #exercise
     Authorizable.set_token my_token
     #verify
     expect(Authorizable).to be_signed_in
@@ -23,7 +23,7 @@ describe Authorizable do
   it "should sign out when I dont have a token stored" do
     #setup
     Authorizable.set_token my_token
-    #exercice
+    #exercise
     Authorizable.clear_token
     #verify
     expect(Authorizable).to_not be_signed_in
