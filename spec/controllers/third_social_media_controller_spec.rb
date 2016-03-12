@@ -319,7 +319,7 @@ describe ThirdSocialMediaController do
         get :export, user: "my_user@me", password: "my_password"
 
         data_return = JSON.parse(response.body) # Parsing JSON response
-        p data_return
+
         #verify
         expect(data_return["count"]).to eq 2
         expect(data_return["user"]["socialPercentage"]).to eq "13%"

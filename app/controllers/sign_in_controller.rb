@@ -12,7 +12,7 @@ class SignInController < ApplicationController
 	   elsif params[:export] == 'social_network_3'
 			redirect_to controller: 'third_social_media', action: 'export',  params: params
 	   else
-	   		raise ActiveRecord::RecordNotFound 
+	   		raise ActiveRecord::RecordNotFound
 	   end
 	end
 end
